@@ -1,0 +1,102 @@
+{
+  "info": {
+    "_postman_id": "0790dde8-9a97-460c-aaf9-a60fa1ee24cf",
+    "name": "TestAPICollection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "21087142",
+    "_collection_link": "https://go.postman.co/collection/21087142-0790dde8-9a97-460c-aaf9-a60fa1ee24cf?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "LoginAPIRequest",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "var authcode= pm.response.json().data.token\r",
+              "pm.collectionVariables.set(\"auth\",authcode)"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"username\": \"iamfd\",\r\n    \"password\": \"password\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://64.227.160.186:9000/v1/login",
+          "protocol": "http",
+          "host": [
+            "64",
+            "227",
+            "160",
+            "186"
+          ],
+          "port": "9000",
+          "path": [
+            "v1",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "UserDetailAPIRequest",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json, text/plain, */*"
+          },
+          {
+            "key": "Authorization",
+            "value": "{{auth}}"
+          }
+        ],
+        "url": {
+          "raw": "http://64.227.160.186:9000/v1/userdetails",
+          "protocol": "http",
+          "host": [
+            "64",
+            "227",
+            "160",
+            "186"
+          ],
+          "port": "9000",
+          "path": [
+            "v1",
+            "userdetails"
+          ]
+        },
+        "description": "Generated from cURL: curl 'http://64.227.160.186:9000/v1/userdetails' \\\r\n  -H 'Accept: application/json, text/plain, */*' \\\r\n  -H 'Accept-Language: en-US,en;q=0.9' \\\r\n  -H 'Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiZmlyc3RfbmFtZSI6ImZkIiwibGFzdF9uYW1lIjoiZmQiLCJsb2dpbl9pZCI6ImlhbWZkIiwibW9iaWxlX251bWJlciI6Ijg4OTk3NzY2NTUiLCJlbWFpbF9pZCI6Im1hcmtAZ21haWwuY29tIiwicGFzc3dvcmQiOiI1ZjRkY2MzYjVhYTc2NWQ2MWQ4MzI3ZGViODgyY2Y5OSIsInJlc2V0X3Bhc3N3b3JkX2RhdGUiOm51bGwsImxvY2tfc3RhdHVzIjowLCJpc19hY3RpdmUiOjEsIm1zdF9yb2xlX2lkIjo1LCJtc3Rfc2VydmljZV9sb2NhdGlvbl9pZCI6MSwiY3JlYXRlZF9hdCI6IjIwMjEtMTEtMDNUMDg6MDY6MjMuMDAwWiIsIm1vZGlmaWVkX2F0IjoiMjAyMS0xMS0wM1QwODowNjoyMy4wMDBaIiwicm9sZV9uYW1lIjoiRnJvbnREZXNrIiwic2VydmljZV9sb2NhdGlvbiI6IlNlcnZpY2UgQ2VudGVyIEEiLCJpYXQiOjE3NzgzMzE5ODl9.EhWvS5zTSWdTg20Dueiug98QQnFS6LrMiANu7BzlheQ' \\\r\n  -H 'Connection: keep-alive' \\\r\n  -H 'Origin: http://phoenix.techwithjatin.com' \\\r\n  -H 'Referer: http://phoenix.techwithjatin.com/' \\\r\n  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36' \\\r\n  --insecure"
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "auth",
+      "value": ""
+    }
+  ]
+}
