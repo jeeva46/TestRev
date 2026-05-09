@@ -26,11 +26,17 @@ jobs:
         run: |
           newman run TestAPICollection.postman_collection.json \
           -e QA.postman_environment.json \
-          -r cli,htmlextra
+          -r cli,htmlextra \
+          --reporter-htmlextra-export ./newman/index.html
 
+      - name: archive the report
+        if: always()
+        uses: actions/upload-artifact@v7.0.1
+        with:
+          name: report name
+          path: newman/index.html
 
-
-
+          
 
 
 
